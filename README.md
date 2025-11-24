@@ -1,6 +1,8 @@
 # web-playground
 
 ## ディレクトリ構成
+
+```
 web-playground/
 ├─ README.md
 ├─ docker-compose.yml
@@ -56,3 +58,4 @@ web-playground/
    ├─ backend-notes.md    # Go側で試したことメモ
    ├─ react-notes.md      # Reactで試したことメモ
    └─ vue-notes.md        # Vueで試したことメモ
+```
