@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  # 1. PostgreSQL データベース
+  db:
+    image: postgres:15-alpine
+    container_name: go_api_db
+    restart: always
+    environment:
+      # DB接続情報 (Goコードと合わせる)
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: app_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # 2. Go API バックエンド
+  go-api:
+    build:
+      context: ./backend/go-api # Dockerfileがあるディレクトリを指定
+      dockerfile: Dockerfile
+    container_name: go_api_server
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    environment: {}
+      # Goアプリ内で使う環境変数を設定することも可能ですが、
+      # 今回はDSNを直接コードに書いたため省略します。
+      # (本番環境ではここにDSNを設定するのがベストです)
+    depends_on:
+      - db # dbコンテナの起動を待ってからgo-apiを起動
+
+volumes:
+  postgres_data:

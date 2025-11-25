@@ -17,6 +17,8 @@ web-playground/
 │     │  ├─ http/        # ハンドラ・ルーティング
 │     │  ├─ service/     # ビジネスロジック
 │     │  ├─ repository/  # DBアクセス（使うなら）
+│     │  ├─ domain/
+│     │  ├─ model/
 │     │  └─ config/
 │     ├─ pkg/            # 共通ユーティリティ（ログ、レスポンス共通処理など）
 │     ├─ Dockerfile
